@@ -18,6 +18,10 @@ compiler for the library and the rough start to a users guide.
   * [[https://github.com/AccelerationNet/lisp-unit2][~lisp-unit2~]]
     - Only needed for testing!
 
+*** Optional Dependencies
+If you want to build the documentation, you will need GNU autotools,
+Texinfo, and a TeX compiler.
+
 *** Guix
 This nanopass compilation framework has support with GNU Guix. If you
 are already using the Guix package manager, then you can dowload all

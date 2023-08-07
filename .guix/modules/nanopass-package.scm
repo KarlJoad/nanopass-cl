@@ -24,6 +24,7 @@
   #:use-module (guix git-download)
   #:use-module (guix build-system asdf)
   #:use-module (gnu packages autotools)
+  #:use-module (gnu packages texinfo)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages lisp-check))
@@ -45,13 +46,28 @@
     (list sbcl
           cl-lisp-unit2
           cl-log4cl
-          autoconf automake))
+          autoconf automake
+          ;; Building the manual
+          texinfo))
    (inputs
     (list cl-alexandria
           cl-slime-swank
           cl-slynk))
    (build-system asdf-build-system/sbcl)
    ;; (build-system asdf-build-system/source) ;; Maybe use this?
+   (arguments
+    (list
+     #:phases
+     #~(modify-phases %standard-phases
+         (add-after 'install 'install-manual
+           (lambda* (#:key (configure-flags '()) (make-flags '()) outputs
+                     #:allow-other-keys)
+             (let* ((out  (assoc-ref outputs "out"))
+                    (info (string-append out "/share/info")))
+               (invoke "./bootstrap")
+               (apply invoke "sh" "./configure" "SHELL=sh" configure-flags)
+               (apply invoke "make" "info" make-flags)
+               (install-file "doc/nanopass.info" info)))))))
    (synopsis "Nanopass Compilation framework in ANSI Common Lisp")
    (description "Nanopass Compilation framework in ANSI Common Lisp.")
    (home-page "http://github.com/KarlJoad/nanopass-framework-cl")
