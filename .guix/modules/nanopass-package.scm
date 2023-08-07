@@ -23,6 +23,7 @@
   #:use-module (guix gexp)
   #:use-module (guix git-download)
   #:use-module (guix build-system asdf)
+  #:use-module (gnu packages autotools)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages lisp-check))
@@ -43,7 +44,8 @@
    (native-inputs
     (list sbcl
           cl-lisp-unit2
-          cl-log4cl))
+          cl-log4cl
+          autoconf automake))
    (inputs
     (list cl-alexandria
           cl-slime-swank
