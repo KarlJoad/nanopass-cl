@@ -46,7 +46,9 @@ Make sure ASDF if capable of finding your copy of Nanopass and lisp-unit2.
    * ~(lisp-unit2:run-tests :package :nanopass/tests)~
 
 ** Makefiles
-There are some Makefiles present, but they are just glue code.  They interact with the build system and control it.
+There are some Makefiles present, but they are just glue code.  They
+interact with the build system and control it. To build the Makefile,
+you will need GNU autotools.
 
 * References
 ===========
