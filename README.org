@@ -1,0 +1,76 @@
+#+TITLE: Nanopass Compiler Library
+
+This repository contains an ANSI Common Lisp version of the Nanopass Compiler
+Infrastructure described in \[1, 2, 3, 4\], along with the beginnings of a test
+compiler for the library and the rough start to a users guide.
+
+** Dependencies
+  * A Common Lisp compiler (SBCL preferred)
+    - This will try to be written using portable Common Lisp, so any compiler may work.
+  * ASDF (Another System Definition Facility)
+    - This is the Common Lisp *build tool*
+    - It does /*NOT*/ download dependencies for you!
+  * Quicklisp
+    - This is the package management tool for Common Lisp.
+    - Quicklisp plugs into ASDF to download /and/ load/build the source for you.
+  * UIOP (Utilities for Implementation and OS Portability)
+  * Alexandria
+  * [[https://github.com/AccelerationNet/lisp-unit2][~lisp-unit2~]]
+    - Only needed for testing!
+
+*** Optional Dependencies
+If you want to build the documentation, you will need GNU autotools,
+Texinfo, and a TeX compiler.
+
+*** Guix
+This nanopass compilation framework has support with GNU Guix. If you
+are already using the Guix package manager, then you can dowload all
+the development dependencies for this project with the following
+snippet:
+#+begin_src sh
+$ guix shell -D -f ./guix.scm
+#+end_src
+
+** Building
+Nanopass builds using the standard ASDF build system.
+
+*** Building on the REPL
+Make sure ASDF is capable of finding your copy of Nanopass.
+   1. ~(asdf:compile-system :nanopass)~
+
+If you want to *force* a rebuild, ASDF supports that too.
+~(asdf:compile-system :nanopass :force t)~.
+
+** Testing
+Nanopass uses lisp-unit2 for its unit testing system.
+
+*** Testing on the REPL
+Make sure ASDF if capable of finding your copy of Nanopass and lisp-unit2.
+   * ~(asdf:test-system :nanopass)~
+   * ~(lisp-unit2:run-tests :package :nanopass/tests)~
+
+** Makefiles
+There are some Makefiles present, but they are just glue code.  They
+interact with the build system and control it. To build the Makefile,
+you will need GNU autotools.
+
+* References
+===========
+[[[https://dl.acm.org/citation.cfm?id=2500618][1]]]
+    A. Keep and R. K. Dybvig. A Nanopass Compiler for Commercial Compiler
+    Development. In ICFP ’13: Proceedings of the 18th ACM SIGPLAN International
+    Conference on Functional Programming, New York, NY, USA, 2013. ACM.
+
+[2] A. Keep. A Nanopass Framework for Commercial Compiler Development.
+    Doctoral dissertation, Indiana University,
+    Bloomington, Indiana, USA, Feb. 2013.
+
+[3] D. Sarkar. Nanopass Compiler Infrastructure.
+    Doctoral dissertation, Indiana University,
+    Bloomington, Indiana, USA, 2008.
+
+[[[https://dl.acm.org/citation.cfm?id=1016878][4]]]
+    D. Sarkar, O. Waddell, and R. K. Dybvig. A nanopass infrastructure for
+    compiler education. In ICFP ’04: Proceedings of the ninth ACM SIGPLAN
+    International Conference on Functional Programming, pages 201–212,
+    New York, NY, USA, 2004. ACM.

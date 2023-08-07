@@ -1,0 +1,78 @@
+# Ignore build artifacts
+build/
+
+# Ignore compiled Common-Lisp files
+*.FASL
+*.fasl
+*.fas
+*.lisp-temp
+*.dfsl
+*.pfsl
+*.d64fsl
+*.p64fsl
+*.lx64fsl
+*.lx32fsl
+*.dx64fsl
+*.dx32fsl
+*.fx64fsl
+*.fx32fsl
+*.sx64fsl
+*.sx32fsl
+*.wx64fsl
+*.wx32fsl
+
+# Ignore etags/ctags
+TAGS
+GPATH
+GRTAGS
+GTAGS
+
+# Ignore C object files and libraries
+*.o
+*.so
+*.a
+
+*.log
+*.tmp
+
+# Emacs/Vim Backup/Auto-Save files
+*~
+.#*
+\#*\#
+,*
+
+# MacOS thing
+.DS_Store
+
+# Documentation & Autoconf/Automake stuff
+/aclocal.m4
+/autom4te.cache
+/build-aux
+/config.status
+/configure
+/doc/*.1
+/doc/.dirstamp
+/doc/contributing.*.texi
+/doc/nanopass*.aux
+/doc/nanopass*.cp
+/doc/nanopass*.cps
+/doc/nanopass*.fn
+/doc/nanopass*.fns
+/doc/nanopass*.html
+/doc/nanopass*.info
+/doc/nanopass*.info-[0-9]
+/doc/nanopass*.ky
+/doc/nanopass*.pdf
+/doc/nanopass*.pg
+/doc/nanopass*.toc
+/doc/nanopass*.t2p
+/doc/nanopass*.tp
+/doc/nanopass*.vr
+/doc/nanopass*.vrs
+/doc/nanopass.*.texi
+/doc/stamp-vti
+/doc/version.texi
+/doc/version-*.texi
+/m4/*
+Makefile
+Makefile.in
